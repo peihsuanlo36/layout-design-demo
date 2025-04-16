@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layout map</title>
+
+    <link rel="stylesheet" href="{% static 'gridapp/style.css' %}">
+</head>
+<body>
+    <form style="display: none;">{% csrf_token %}</form> <!-- CSRF token blocking avoid-->
+
+    <h1>Layout Design</h1>
+
+    <!-- Layout -->
+    <div style="margin-bottom: 10px;">
+        <label>Choose from previous layout: </label>
+        <select id="layout-select"></select>
+        <label> Or create new layout ：</label>
+        <input type="text" id="new-layout-input" placeholder="New layout name" />
+        <button id="layout-switch-btn"> Load Layout</button>
+    </div>
+
+    <!-- Block 控制區塊 -->
+    <div style="margin-bottom: 10px;">
+        <label>Block width: <input type="number" id="w-input" value="100" /></label>
+        <label>Block height: <input type="number" id="h-input" value="100" /></label>
+        <button id="add-block-btn" type="button">Add block</button>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <button id="save-layout-btn">Save Current Layout</button>
+    </div>
+
+    <div id="canvas"></div>
+
+    <script type="module" src="{% static 'gridapp/main.js' %}?v={{ timestamp }}"></script>
+</body>
+</html>
